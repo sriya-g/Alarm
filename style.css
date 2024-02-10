@@ -1,0 +1,58 @@
+/* STYLE SECTIONING TAGS */
+body {
+  background-color: lavenderblush;
+  text-align: center;
+}
+
+/* STYLE TEXT */
+h1 {
+  color: #3e567c;
+  font-family: 'Lato', sans-serif;
+}
+
+h2 {
+  font-family: 'Lato', sans-serif;
+}
+
+h3 {
+  font-family: 'Lato', sans-serif;
+}
+
+p {
+  font-size: 18px;
+  font-family: 'Merriweather', serif;
+}
+
+#intro {
+  font-size: 22px;
+  font-family: 'Merriweather', serif;
+}
+
+#title {
+  font-size: 40px;
+  color: #244068;
+}
+
+/* STYLE NAV BAR */
+nav {
+  font-family: "verdana", sans-serif;
+  font-size: 22px;
+  border: 6px solid lightcoral;
+  border-style: outset;
+  border-radius: 5px;
+  background: lightpink;
+}
+
+.category {
+  border: 0px solid lightcoral;
+  border-radius: 5px;
+  background: lightpink;
+  transition: 0.2s background-color;
+  color: black;
+  text-decoration: none;
+}
+
+.category:hover {
+  background: lightcoral;
+  transition-delay: 0.25s;
+}
