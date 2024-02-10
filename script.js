@@ -2,14 +2,16 @@ var currentTime = new Date().toLocaleTimeString();
 var cTime = Date.now();
 var alarmTime = new Date().setHours(0, 0, 0);
 var sound = new Audio("sample.mp3");
-document.getElementById("set-alarm").addEventListener("click", setTimer());
+document.getElementById("set-alarm").addEventListener("click", setTimer);
 setInterval(updateTime, 1000);
+var myDifference = null;
 function updateTime() {
   currentTime = new Date().toLocaleTimeString();
   cTime = Date.now();
   document.getElementById("time-disp").textContent = "Current time: " + currentTime;
 }
 function updateDifference() {
+  document.getElementById("time-left").style.color = "black";
   var timeLeft = alarmTime - cTime;
   var TimeLeftHrs = Math.floor(timeLeft / (3.6e+6));
   var TimeLeftMins = Math.floor((timeLeft % (3.6e+6)) / (60000));
@@ -34,7 +36,8 @@ function acceptTime() {
     alarmTime = alarmTime + 8.64e+7;
   alarmTime = new Date(alarmTime);
   document.getElementById("alarm-disp").textContent = "Current Alarm: " + alarmTime.toLocaleString();
-  setInterval(updateDifference, 1000);
+  document.getElementById("clear-alarm").addEventListener("click", clearAlarm);
+  myDifference = setInterval(updateDifference, 1000);
 }
 function setTimer() {
   document.getElementById("set-time").innerHTML = '<input type = "time" id = "timePicker" ></input> <button id = "submit">Submit!</button>';
@@ -45,7 +48,11 @@ function activateAlarm() {
   document.getElementById("time-left").style.color = "red";
   document.getElementById("time-left").textContent = "ALARM ACTIVATED";
   sound.play();
-  setTimeout(function() {
-    sound.pause();
-  }, 3000);
+}
+function clearAlarm() {
+  sound.pause();
+  clearInterval(myDifference);
+  document.getElementById("time-left").textContent = "";
+  document.getElementById("alarm-disp").textContent = "";
+  document.getElementById("time-left").style.color = "black";
 }
